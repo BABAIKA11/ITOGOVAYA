@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Update Income</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div>
+            <h2>Update Income</h2>
+            <div class="row">
+                <div>
+                    <form action="#" th:action="@{/updateIncome/{id}(id=${income.id})}" th:object="${income}" method="post">
+                        <div class="row">
+                            <div >
+                                <label for="day">Day</label>
+                                <input type="text" th:field="*{day}" id="day" placeholder="day">
+                                <span th:if="${#fields.hasErrors('day')}" th:errors="*{day}" ></span>
+                            </div>
+                            <div >
+                                <label for="month" class="col-form-label">month</label>
+                                <input type="text" th:field="*{month}"  id="month" placeholder="month">
+                                <span th:if="${#fields.hasErrors('month')}" th:errors="*{month}" ></span>
+                            </div>
+                            <div >
+                                <label for="year" class="col-form-label">year</label>
+                                <input type="text" th:field="*{year}" id="year" placeholder="year">
+                                <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}" ></span>
+                            </div>
+                            <div >
+                                <label for="incomerubles" class="col-form-label">incomerubles</label>
+                                <input type="number" th:field="*{incomerubles}" id="incomerubles" placeholder="incomerubles">
+                                <span th:if="${#fields.hasErrors('incomerubles')}" th:errors="*{incomerubles}" ></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-5">
+                                <input type="submit" class="btn btn-primary" value="Update income">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

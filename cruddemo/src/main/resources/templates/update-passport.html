@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Update User</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div>
+            <h2>Update Password</h2>
+            <div class="row">
+                <div>
+                    <form action="#" th:action="@{/update/{id}(id=${passport.id})}" th:object="${passport}" method="post">
+                        <div class="row">
+                            <div>
+                                <label for="series" >series</label>
+                                <input type="text" th:field="*{series}"  id="series" placeholder="series">
+                                <span th:if="${#fields.hasErrors('series')}" th:errors="*{series}" ></span>
+                            </div>
+                            <div>
+                                <label for="number" >Number</label>
+                                <input type="text" th:field="*{number}"  id="number" placeholder="number">
+                                <span th:if="${#fields.hasErrors('number')}" th:errors="*{number}" ></span>
+                            </div>
+                            <div>
+                                <label for="issuedbywhom" >Issued by whom</label>
+                                <input type="text" th:field="*{issuedbywhom}" id="issuedbywhom" placeholder="issuedbywhom">
+                                <span th:if="${#fields.hasErrors('issuedbywhom')}" th:errors="*{issuedbywhom}" ></span>
+                            </div>
+                            <div>
+                                <label for="dateofissue" >dateofissue</label>
+                                <input type="date" th:field="*{dateofissue}" id="dateofissue" placeholder="dateofissue">
+                                <span th:if="${#fields.hasErrors('dateofissue')}" th:errors="*{dateofissue}" ></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-5">
+                                <input type="submit" class="btn btn-primary" value="Update Passport">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

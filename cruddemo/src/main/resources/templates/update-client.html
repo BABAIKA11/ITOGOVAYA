@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Update User</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div>
+            <h2>Update Password</h2>
+            <div class="row">
+                <div>
+                    <form action="#" th:action="@{/updateClient/{id}(id=${client.id})}" th:object="${client}" method="post">
+                        <div class="row">
+                            <div>
+                                <label for="mail" >Mail</label>
+                                <input type="text" th:field="*{mail}"  id="mail" placeholder="mail">
+                                <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" ></span>
+                            </div>
+                            <div>
+                                <label for="hash" >Hash</label>
+                                <input type="text" th:field="*{hash}"  id="hash" placeholder="hash">
+                                <span th:if="${#fields.hasErrors('hash')}" th:errors="*{hash}" ></span>
+                            </div>
+                            <div>
+                                <label for="salt" >Salt</label>
+                                <input type="text" th:field="*{salt}" id="salt" placeholder="salt">
+                                <span th:if="${#fields.hasErrors('salt')}" th:errors="*{salt}" ></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-5">
+                                <input type="submit" class="btn btn-primary" value="Update Client">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

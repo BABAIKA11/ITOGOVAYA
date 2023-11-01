@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Users</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div th:switch="${passport}" class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div th:case="*">
+                        <h2 class="my-5">Passports</h2>
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>ID Employee</th>
+                                    <th>Series</th>
+                                    <th>Number</th>
+                                    <th>Issued by whom</th>
+                                    <th>Date of issue</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="pass : ${passport}">
+                                    <td th:text="${pass.id}"></td>
+                                    <td th:text="${pass.series}"></td>
+                                    <td th:text="${pass.number}"></td>
+                                    <td th:text="${pass.issuedbywhom}"></td>
+                                    <td th:text="${pass.dateofissue}"></td>
+                                    <td><a th:href="@{/edit/{id}(id=${pass.id})}">EDIT</a></td>
+                                    <td><a th:href="@{/delete/{id}(id=${pass.id})}">DELETE</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <form th:method="POST" th:action="@{/search}">
+                        <label for="searchstr">Enter series to search</label>
+                        <input type="text" id="searchstr" name="searchstr">
+                        <input type="submit" value="Search">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div th:switch="${role}" class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div th:case="*">
+                        <h2 class="my-5">Roles</h2>
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th>Name role</th>
+                                <th>Salary</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="rl : ${role}">
+                                <td th:text="${rl.namerole}"></td>
+                                <td th:text="${rl.salary}"></td>
+                                <td><a th:href="@{/editRole/{id}(id=${rl.id})}">EDIT</a></td>
+                                <td><a th:href="@{/deleteRole/{id}(id=${rl.id})}">DELETE</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="my-5"><a href="/newRole">Add Role</a></p>
+                </div>
+            </div>
+        </div>
+        <div th:switch="${client}" class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div th:case="*">
+                        <h2 class="my-5">Clients</h2>
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th>Mail</th>
+                                <th>Hash</th>
+                                <th>Salt</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="cl : ${client}">
+                                <td th:text="${cl.mail}"></td>
+                                <td th:text="${cl.hash}"></td>
+                                <td th:text="${cl.salt}"></td>
+                                <td><a th:href="@{/editClient/{id}(id=${cl.id})}">EDIT</a></td>
+                                <td><a th:href="@{/deleteClient/{id}(id=${cl.id})}">DELETE</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="my-5"><a href="/newClient">Add Client</a></p>
+                </div>
+            </div>
+        </div>
+        <div th:switch="${employee}" class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div th:case="*">
+                        <h2 class="my-5">Employees</h2>
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Surname</th>
+                                <th>Firstname</th>
+                                <th>Midname</th>
+                                <th>Work Experience</th>
+                                <th>Phone number</th>
+                                <th>Mail</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="emp : ${employee}">
+                                <td th:text="${emp.id}"></td>
+                                <td th:text="${emp.surname}"></td>
+                                <td th:text="${emp.firstname}"></td>
+                                <td th:text="${emp.midname}"></td>
+                                <td th:text="${emp.workexperience}"></td>
+                                <td th:text="${emp.phonenumber}"></td>
+                                <td th:text="${emp.mail}"></td>
+                                <td><a th:href="@{/editEmployee/{id}(id=${emp.id})}">EDIT</a></td>
+                                <td><a th:href="@{/deleteEmployee/{id}(id=${emp.id})}">DELETE</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="my-5"><a href="/newEmployee">Add Employee</a></p>
+                </div>
+            </div>
+        </div>
+        <div th:switch="${product}" class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div th:case="*">
+                        <h2 class="my-5">Products</h2>
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Color</th>
+                                <th>Amount Of Items</th>
+                                <th>Manufacturer</th>
+                                <th>Storage number</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="prod : ${product}">
+                                <td th:text="${prod.id}"></td>
+                                <td th:text="${prod.name}"></td>
+                                <td th:text="${prod.price}"></td>
+                                <td th:text="${prod.description}"></td>
+                                <td th:text="${prod.amount}"></td>
+                                <td th:text="${prod.color}"></td>
+                                <td th:text="${prod.amountofitems}"></td>
+                                <td th:text="${prod.manufacturer.getName()}"></td>
+                                <td th:text="${prod.storage.getNumber()}"></td>
+                                <td><a th:href="@{/editProduct/{id}(id=${prod.id})}">EDIT</a></td>
+                                <td><a th:href="@{/deleteProduct/{id}(id=${prod.id})}">DELETE</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="my-5"><a href="/newProduct">Add Product</a></p>
+                </div>
+            </div>
+        </div>
+        <div th:switch="${manufacturer}" class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div th:case="*">
+                        <h2 class="my-5">Manufacturers</h2>
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="man : ${manufacturer}">
+                                <td th:text="${man.id}"></td>
+                                <td th:text="${man.name}"></td>
+                                <td><a th:href="@{/editManufacturer/{id}(id=${man.id})}">EDIT</a></td>
+                                <td><a th:href="@{/deleteManufacturer/{id}(id=${man.id})}">DELETE</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="my-5"><a href="/newManufacturer">Add Manufacturer</a></p>
+                </div>
+            </div>
+        </div>
+        <div th:switch="${storage}" class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div th:case="*">
+                        <h2 class="my-5">Storages</h2>
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Number</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="sto : ${storage}">
+                                <td th:text="${sto.id}"></td>
+                                <td th:text="${sto.number}"></td>
+                                <td><a th:href="@{/editStorage/{id}(id=${sto.id})}">EDIT</a></td>
+                                <td><a th:href="@{/deleteStorage/{id}(id=${sto.id})}">DELETE</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="my-5"><a href="/newStorage">Add Storage</a></p>
+                </div>
+            </div>
+        </div>
+        <div th:switch="${income}" class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div th:case="*">
+                        <h2 class="my-5">Incomes</h2>
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                                <th>Income</th>
+                                <th>UPDATE</th>
+                                <th>DELETE</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="inc : ${income}">
+                                <td th:text="${inc.day}"></td>
+                                <td th:text="${inc.month}"></td>
+                                <td th:text="${inc.year}"></td>
+                                <td th:text="${inc.incomerubles}"></td>
+                                <td><a th:href="@{/editIncome/{id}(id=${inc.id})}">EDIT</a></td>
+                                <td><a th:href="@{/deleteIncome/{id}(id=${inc.id})}">DELETE</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="my-5"><a href="/newIncome">Add Income</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

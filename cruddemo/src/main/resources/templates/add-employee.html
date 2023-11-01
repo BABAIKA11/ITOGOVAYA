@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Add Passport</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div>
+            <h2>New Passport</h2>
+            <div>
+                <div>
+                    <form action="#" th:action="@{/addemployee}" th:object="${employee}" method="post">
+                        <div class="row">
+                            <div >
+                                <label for="surname">surname</label>
+                                <input type="text" th:field="*{surname}" id="surname" placeholder="surname">
+                                <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" ></span>
+                            </div>
+                            <div >
+                                <label for="firstname">firstname</label>
+                                <input type="text" th:field="*{firstname}" id="firstname" placeholder="firstname">
+                                <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" ></span>
+                            </div>
+                            <div >
+                                <label for="midname">midname</label>
+                                <input type="text" th:field="*{midname}" id="midname" placeholder="midname">
+                                <span th:if="${#fields.hasErrors('midname')}" th:errors="*{midname}" ></span>
+                            </div>
+                            <div >
+                                <label for="workexperience">workexperience</label>
+                                <input type="number" th:field="*{workexperience}" id="workexperience" placeholder="workexperience">
+                                <span th:if="${#fields.hasErrors('workexperience')}" th:errors="*{workexperience}" ></span>
+                            </div>
+                            <div >
+                                <label for="phonenumber">phonenumber</label>
+                                <input type="text" th:field="*{phonenumber}" id="phonenumber" placeholder="phonenumber">
+                                <span th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}" ></span>
+                            </div>
+                            <div >
+                                <label for="mail">mail</label>
+                                <input type="text" th:field="*{mail}" id="mail" placeholder="mail">
+                                <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" ></span>
+                            </div>
+
+                            <p></p><p></p><p></p><p></p>
+
+                        </div>
+                        <div class="row">
+                            <div >
+                                <input type="submit"  value="Add Employee">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

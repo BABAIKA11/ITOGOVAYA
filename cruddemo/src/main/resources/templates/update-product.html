@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Update Product</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div>
+            <h2>Update Product</h2>
+            <div class="row">
+                <div>
+                    <form action="#" th:action="@{/updateProduct/{id}(id=${product.id})}" th:object="${product}" method="post">
+                        <div class="row">
+                            <div >
+                                <label for="name">Name</label>
+                                <input type="text" th:field="*{name}" id="name" placeholder="name">
+                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span>
+                            </div>
+                            <div >
+                                <label for="price" class="col-form-label">price</label>
+                                <input type="number" th:field="*{price}"  id="price" placeholder="price">
+                                <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" ></span>
+                            </div>
+                            <div >
+                                <label for="description" class="col-form-label">description</label>
+                                <input type="text" th:field="*{description}" id="description" placeholder="description">
+                                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" ></span>
+                            </div>
+                            <div >
+                                <label for="amount" class="col-form-label">amount</label>
+                                <input type="text" th:field="*{amount}" id="amount" placeholder="amount">
+                                <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" ></span>
+                            </div>
+                            <div >
+                                <label for="color" class="col-form-label">color</label>
+                                <input type="text" th:field="*{color}" id="color" placeholder="color">
+                                <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}" ></span>
+                            </div>
+                            <div >
+                                <label for="amountofitems" class="col-form-label">amountofitems</label>
+                                <input type="text" th:field="*{amountofitems}" id="amountofitems" placeholder="amountofitems">
+                                <span th:if="${#fields.hasErrors('amountofitems')}" th:errors="*{amountofitems}" ></span>
+                            </div>
+                            <div>
+                                <select name="manufacturer">
+                                    <option th:each="man : ${manufacturer}" th:value="${man.getId()}" th:text="${man.getName()}"></option>
+                                </select>
+                                <span th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}" ></span>
+                            </div>
+                            <div>
+                                <select name="storage">
+                                    <option th:each="st : ${storage}" th:value="${st.getId()}" th:text="${st.getNumber()}"></option>
+                                </select>
+                                <span th:if="${#fields.hasErrors('storage')}" th:errors="*{storage}" ></span>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-5">
+                                <input type="submit" class="btn btn-primary" value="Update Product">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
